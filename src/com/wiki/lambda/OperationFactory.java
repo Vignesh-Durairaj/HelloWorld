@@ -63,7 +63,7 @@ public class OperationFactory {
 		
 		return objList -> {
 			if (objList != null && !objList.isEmpty()) {
-				objList.forEach(obj -> System.out.println(obj.toString()));
+				objList.forEach(System.out::println);
 			} else {
 				System.out.println("No Elements to iterate !");
 			}
