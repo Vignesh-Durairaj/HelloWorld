@@ -1,6 +1,7 @@
 package com.wiki.lambda;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import com.wiki.lambda.interfaces.IOperation;
@@ -55,6 +56,18 @@ public class OperationFactory {
 			}
 			
 			return countMap;
+		};
+	}
+	
+	public static IOperation<List<? extends Object>, Void> getPrintObjectListImpl() {
+		
+		return objList -> {
+			if (objList != null && !objList.isEmpty()) {
+				objList.forEach(obj -> System.out.println(obj.toString()));
+			} else {
+				System.out.println("No Elements to iterate !");
+			}
+			return null;
 		};
 	}
 	
