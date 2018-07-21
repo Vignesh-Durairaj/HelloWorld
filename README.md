@@ -4,9 +4,9 @@ My very first **Java** project in GitHub, which mainly helps me to get to know m
 
 The below are the set of items covered in this project
 
-- Simple Java `Hello World` program
-- A set of hands on practices on `Java 8 Lambda expression`.
-- Planned to have a set of practices code on `Method References`.
-
+* Simple Java `Hello World` program
+* A set of hands on practices on `Java 8 Lambda expression`.
+  * Added set of practice codes on `Method References`.
+  * Utilization of static `utility methods` in lambdas
 
 > *Its never late to start working than thinking about it*
