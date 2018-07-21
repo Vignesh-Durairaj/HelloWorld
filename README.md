@@ -6,7 +6,7 @@ The below are the set of items covered in this project
 
 - Simple Java `Hello World` program
 - A set of hands on practices on `Java 8 Lambda expression`.
-- Planned to have a set of practices code on `Method References`.
+  - Planned to have a set of practices code on `Method References`.
 
 
 > *Its never late to start working than thinking about it*
