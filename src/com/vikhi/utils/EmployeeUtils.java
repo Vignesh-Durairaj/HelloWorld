@@ -44,6 +44,19 @@ public class EmployeeUtils {
 		return employeeList;
 	}
 	
+	public static void printEmployee(final Employee employee) {
+		System.out.println(employee);
+	}
+	
+	public static Boolean isEmployeeActive(final Employee employee) {
+		Boolean isActive = Boolean.FALSE;
+		if (null != employee && null != employee.getEmployeeDetails()) {
+			isActive = employee.getIsActive() && employee.getEmployeeDetails().getIsAlive();
+		}
+		
+		return isActive;
+	}
+	
 	private static Person getPersonJohn() {
 		return new Person("Johny", "Smithson", 35, "Bentonville", Boolean.TRUE);
 	}
