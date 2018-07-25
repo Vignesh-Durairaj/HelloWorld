@@ -34,7 +34,7 @@ public class OperationExecutor {
 			}
 		}
 		
-		List<Integer> intList = Arrays.asList(new Integer[] {10, 20, 0, 40, 50, 60, 70});
+		List<Integer> intList = Arrays.asList(10, 20, 0, 40, 50, 60, 70);
 		printListOperation.operate(intList);
 		printListOperation.operate(null);
 	}
