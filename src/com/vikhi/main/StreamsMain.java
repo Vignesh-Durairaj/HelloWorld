@@ -1,6 +1,8 @@
 package com.vikhi.main;
 
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -14,6 +16,7 @@ public class StreamsMain {
 	
 	public static void main(String[] args) {
 		getManagersList();
+		mapVsFlatMap();
 	}
 	
 	public static void printAllEmployees() {
@@ -34,8 +37,9 @@ public class StreamsMain {
 	}
 	
 	public static void getManagersList() {
-		Map<Long, Employee> employeeMap = employeeList.stream()
-					.collect(Collectors.toMap(Employee::getEmployeeId, p -> p));
+		Map<Long, Employee> employeeMap = employeeList
+													.stream()
+													.collect(Collectors.toMap(Employee::getEmployeeId, p -> p));
 		
 		Collection<Employee> managerSet = employeeList
 													.stream()
@@ -44,7 +48,19 @@ public class StreamsMain {
 		
 		managerSet
 				.stream()
-				.sorted((e1,e2) -> e1.getEmployeeId().compareTo(e2.getEmployeeId()))
+				.sorted(Comparator.comparing(Employee::getEmployeeId))
 				.forEach(System.out::println);
+	}
+	
+	public static void mapVsFlatMap() {
+		employeeList.stream()
+					.map(emp -> Arrays.stream(emp.getEmployeeDetails().getLastName().split(" ")))
+					.collect(Collectors.toList())
+					.forEach(System.out::println);
+		
+		employeeList.stream()
+					.flatMap(emp -> Arrays.stream(emp.getEmployeeDetails().getLastName().split(" ")))
+					.collect(Collectors.toList())
+					.forEach(System.out::println);
 	}
 }
