@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 import com.vikhi.stream.model.Employee;
+import com.vikhi.stream.model.Person;
 import com.vikhi.utils.EmployeeUtils;
 
 public class StreamsMain {
@@ -18,6 +19,7 @@ public class StreamsMain {
 		getManagersList();
 		mapVsFlatMap();
 		mathOperations();
+		matchoperations();
 	}
 	
 	public static void printAllEmployees() {
@@ -73,5 +75,34 @@ public class StreamsMain {
 		employeeList.stream()
 					.min(Comparator.comparing(Employee::getEmployeeId))
 					.ifPresent(System.out::println);
+	}
+	
+	public static void matchoperations() {
+		System.out.println("Firing old Persons");
+		List<Employee> oldEmpList = employeeList.stream()
+												.filter(e -> e.getEmployeeDetails().getAge() >= 50)
+												.map(EmployeeUtils::fireEmployee)
+												.collect(Collectors.toList());
+		List<Person> deadList = oldEmpList
+									.stream()
+									.filter(e -> e.getEmployeeDetails().getAge() < 60)
+									.map(emp -> EmployeeUtils.killPerson(emp.getEmployeeDetails()))
+									.collect(Collectors.toList());
+		
+		System.out.println("At least one Active : " + oldEmpList
+														.stream()
+														.anyMatch(e -> e.getEmployeeDetails().getIsAlive()));
+		
+		System.out.println("At least All Alive : " + deadList
+														.stream()
+														.allMatch(Person::getIsAlive));
+		
+		System.out.println("Are all old : " + oldEmpList
+													.stream()
+													.noneMatch(e -> e.getEmployeeDetails().getAge() < 50));
+		
+		System.out.println("Are all Active : " + deadList
+													.stream()
+													.noneMatch(Person::getIsAlive));
 	}
 }
