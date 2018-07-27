@@ -17,6 +17,7 @@ public class StreamsMain {
 	public static void main(String[] args) {
 		getManagersList();
 		mapVsFlatMap();
+		mathOperations();
 	}
 	
 	public static void printAllEmployees() {
@@ -62,5 +63,15 @@ public class StreamsMain {
 					.flatMap(emp -> Arrays.stream(emp.getEmployeeDetails().getLastName().split(" ")))
 					.collect(Collectors.toList())
 					.forEach(System.out::println);
+	}
+	
+	public static void mathOperations() {
+		employeeList.stream()
+					.max(Comparator.comparingInt(emp -> emp.getEmployeeDetails().getAge()))
+					.ifPresent(System.out::println);
+		
+		employeeList.stream()
+					.min(Comparator.comparing(Employee::getEmployeeId))
+					.ifPresent(System.out::println);
 	}
 }
