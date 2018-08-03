@@ -6,6 +6,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import com.vikhi.stream.model.Employee;
 import com.vikhi.stream.model.Person;
@@ -20,6 +21,7 @@ public class StreamsMain {
 		mapVsFlatMap();
 		mathOperations();
 		matchoperations();
+		findMax(false);
 	}
 	
 	public static void printAllEmployees() {
@@ -104,5 +106,18 @@ public class StreamsMain {
 		System.out.println("Are all Active : " + deadList
 													.stream()
 													.noneMatch(Person::getIsAlive));
+	}
+	
+	public static int findMax(boolean isFirstOccurrence) {
+		int maxIndex = -1;
+		
+			List<Integer> intList = Arrays.asList(10, 2, 3, 4, 6, 0, 10);
+			
+			IntStream.range(0, intList.size())
+			  .reduce((a,b)->(isFirstOccurrence ? intList.get(a)<intList.get(b) : intList.get(a)<=intList.get(b)) ? b: a)
+			  .ifPresent(ix->System.out.println("Index "+ix+", value "+intList.get(ix)));
+			
+		
+		return maxIndex;
 	}
 }
