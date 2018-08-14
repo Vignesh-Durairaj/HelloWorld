@@ -22,6 +22,7 @@ public class StreamsMain {
 		mathOperations();
 		matchoperations();
 		findMax(false);
+		peekSkipStream();
 	}
 	
 	public static void printAllEmployees() {
@@ -119,5 +120,21 @@ public class StreamsMain {
 			
 		
 		return maxIndex;
+	}
+	
+	public static void peekSkipStream() {
+		Map<Long, Employee> empMap = employeeList.stream()
+					.peek(emp -> System.out.println("Before filter : " + emp))
+					.filter(emp -> emp.getEmployeeDetails().getAge() > 40)
+					.peek(emp -> System.out.println("After Filter : " + emp))
+					.collect(Collectors.toMap(Employee::getEmployeeId, emp -> emp));
+		
+		System.out.println(empMap.size());
+		
+		empMap.values()
+			.stream()
+			.sorted((e1, e2) -> e1.getEmployeeDetails().getAge().compareTo(e2.getEmployeeDetails().getAge()))
+			.skip(2)
+			.forEach(System.out::println);
 	}
 }
