@@ -23,6 +23,29 @@ public class StreamsMain {
 		matchoperations();
 		findMax(false);
 		peekSkipStream();
+		createMap();
+	}
+	
+	public static void createMap() {
+		List<Integer> intList = Arrays.asList(1, 2, 3, 4, 5, 3);
+		
+		try {
+			intList
+				.stream()
+				.collect(Collectors.toMap(i -> i, String::valueOf));
+		} catch (Exception e) {
+			System.out.println("Exception occurred while creating a map");
+			e.printStackTrace();
+		}
+		
+		Map<Integer, String> intMap = intList
+										.stream()
+										.collect(Collectors.toMap(i -> i, String::valueOf, (i1, i2) -> {
+											System.out.println("Duplicate Key with value : " + i1); 
+											return i2;
+										}));
+		
+		System.out.println(intMap);
 	}
 	
 	public static void printAllEmployees() {
