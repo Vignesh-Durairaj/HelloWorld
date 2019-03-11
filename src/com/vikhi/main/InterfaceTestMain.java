@@ -16,5 +16,10 @@ public class InterfaceTestMain implements TestInterfaceOne, TestInterfaceTwo{
 	public void print() {
 		TestInterfaceOne.super.print();
 	}
+	
+	public static void main(String[] args) {
+		InterfaceTestMain iTest = new InterfaceTestMain();
+		iTest.process(10);
+	}
 
 }
