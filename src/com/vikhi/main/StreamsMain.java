@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Consumer;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -24,6 +25,7 @@ public class StreamsMain {
 		findMax(false);
 		peekSkipStream();
 		createMap();
+		streamForEach();
 	}
 	
 	public static void createMap() {
@@ -159,5 +161,38 @@ public class StreamsMain {
 			.sorted((e1, e2) -> e1.getEmployeeDetails().getAge().compareTo(e2.getEmployeeDetails().getAge()))
 			.skip(2)
 			.forEach(System.out::println);
+	}
+	
+	public static void streamForEach() {
+		System.out.println("Printing names : ");
+		Consumer<Employee> employeeConsumer = new Consumer<Employee>() {
+
+			@Override
+			public void accept(Employee t) {
+				System.out.println(t.getEmployeeDetails().getFirstName());
+			}
+		};
+		
+		employeeList.subList(0, employeeList.size() - 4).forEach(employeeConsumer);
+		employeeList.subList(0, employeeList.size() - 4).stream().forEach(employeeConsumer);
+		employeeList.subList(0, employeeList.size() - 4).parallelStream().forEach(employeeConsumer);
+		
+		System.out.println("Removing names : ");
+		Consumer<Employee> removeEmployee = new Consumer<Employee>() {
+
+			@Override
+			public void accept(Employee t) {
+				if (t != null && t.getEmployeeDetails() != null && t.getEmployeeDetails().getFirstName().equals("Peter")) {
+					employeeList.remove(t);
+					System.out.println("Employee removed !");
+				} else {
+					System.out.println(t.getEmployeeDetails());
+				}
+			}
+		};
+		
+		employeeList.forEach(removeEmployee);
+		employeeList.subList(0, employeeList.size() - 4).stream().forEach(removeEmployee);
+		employeeList.subList(0, employeeList.size() - 4).parallelStream().forEach(removeEmployee);
 	}
 }
