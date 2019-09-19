@@ -6,9 +6,9 @@ import java.util.stream.Stream;
 
 import com.vikhi.stream.model.Employee;
 
-public class StreamCreator {
+public class StreamCreatorUtils {
 
-	private StreamCreator () {
+	private StreamCreatorUtils () {
 		// Can be implemented if needed.
 	}
 	

@@ -17,9 +17,9 @@ public class StreamSupplier implements Supplier<Stream<Employee>> {
 		Stream<Employee> employeeStream;
 		
 		if (dataCollection instanceof List<?>) {
-			employeeStream = StreamCreator.createStreamFromList((List<Employee>) dataCollection);
+			employeeStream = StreamCreatorUtils.createStreamFromList((List<Employee>) dataCollection);
 		} else if (dataCollection.getClass().isArray()) {
-			employeeStream = StreamCreator.createStreamFromArray((Employee[]) dataCollection);
+			employeeStream = StreamCreatorUtils.createStreamFromArray((Employee[]) dataCollection);
 		} else {
 			employeeStream = Stream.empty();
 		}

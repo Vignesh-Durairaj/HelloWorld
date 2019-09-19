@@ -9,10 +9,10 @@ import com.wiki.lambda.interfaces.IOperation;
 
 public class OperationExecutor {
 	
-	IOperation<Integer, Integer> diagonalOperation = OperationFactory.getDiagonallengthImpl(); 
-	IOperation<String, Integer> stringLengthOperation = OperationFactory.getStringLengthImpl();
-	IOperation<String, Map<Character, Integer>> charCountOperation = OperationFactory.getCharCountImpl();
-	IOperation<List<? extends Object>, Void> printListOperation = OperationFactory.getPrintObjectListImpl();
+	private IOperation<Integer, Integer> diagonalOperation = OperationFactory.getDiagonallengthImpl(); 
+	private IOperation<String, Integer> stringLengthOperation = OperationFactory.getStringLengthImpl();
+	private IOperation<String, Map<Character, Integer>> charCountOperation = OperationFactory.getCharCountImpl();
+	private IOperation<List<? extends Object>, Void> printListOperation = OperationFactory.getPrintObjectListImpl();
 	
 	public void execute (final Integer a, final String str) {
 		System.out.println(

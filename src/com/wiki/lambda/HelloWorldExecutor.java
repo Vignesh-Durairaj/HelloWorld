@@ -4,9 +4,9 @@ import com.wiki.lambda.interfaces.IHelloWorld;
 
 public class HelloWorldExecutor {
 
-	IHelloWorld helloWorldEng = (a, b) -> "Hello " + a + " " + b + " !";
-	IHelloWorld helloWorldFra = (a, b) -> "Bonjour " + b + ", " + a + " !";
-	IHelloWorld helloWorldSve = (a, b) -> "Hallå " + a + "-" + b + " !!!";
+	private IHelloWorld helloWorldEng = (a, b) -> "Hello " + a + " " + b + " !";
+	private IHelloWorld helloWorldFra = (a, b) -> "Bonjour " + b + ", " + a + " !";
+	private IHelloWorld helloWorldSve = (a, b) -> "Hallï¿½ " + a + "-" + b + " !!!";
 	
 	public void execute(String firstName, String lastName) {
 		System.out.println("English : " + helloWorldEng.sayHello(firstName, lastName));
