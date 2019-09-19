@@ -13,7 +13,7 @@ import com.vikhi.stream.model.Employee;
 import com.vikhi.stream.model.Person;
 import com.vikhi.utils.EmployeeUtils;
 
-public class StreamsMain {
+public class StreamsHelper {
 
 	private static List<Employee> employeeList = EmployeeUtils.getEmployeeList();
 	
