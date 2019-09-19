@@ -8,8 +8,8 @@ import com.wiki.lambda.interfaces.IOperation;
 
 public class OperationFactory {
 	
-	private OperationFactory() throws Exception{
-		throw new Exception ("This is a static util class and not in need of a constructor");
+	private OperationFactory() throws IllegalAccessException{
+		throw new IllegalAccessException ("This is a static util class and not in need of a constructor");
 	}
 	
 	public static IOperation<Integer,  Integer> getDiagonallengthImpl() {
