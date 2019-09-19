@@ -4,10 +4,10 @@ import com.wiki.lambda.interfaces.IBehave;
 
 public class BehaveLambdaExecutor {
 
-	IBehave doublingBehavior = n -> (n != null) ? n * 2 : null;
-	IBehave triplingBehavior = n -> (n != null) ? n * 3 : null;
-	IBehave addFiveBeahvior = n -> (n != null) ? n + 5 : null;
-	IBehave squaringBehavior = n -> (n != null) ? n * n : null;
+	private IBehave doublingBehavior = n -> (n != null) ? n * 2 : null;
+	private IBehave triplingBehavior = n -> (n != null) ? n * 3 : null;
+	private IBehave addFiveBeahvior = n -> (n != null) ? n + 5 : null;
+	private IBehave squaringBehavior = n -> (n != null) ? n * n : null;
 	
 	public void execute(Integer a) {
 		System.out.println("Doubling Behaviour is : " + doublingBehavior.getBehavior(a));
